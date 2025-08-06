@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+   <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,13 +43,13 @@
         th:nth-child(1),
         th:nth-child(4) {
             text-align: center;
-            width: 80px;
+            width: 100px;
         }
 
         td:nth-child(3),
         th:nth-child(3) {
             text-align: center;
-            width: 150px;
+            width: 180px;
         }
 
         tr:hover {
@@ -103,7 +104,16 @@
 		<c:forEach var="boardDto" items="${boradList}">
 			<tr>
 				<td>${boardDto.bnum }</td>
-				<td><a href="#">${boardDto.btitle }</a></td>
+				<td>
+					<c:choose> <!--  글자수 제한으로 보여지는 갯수 선택 이후 ... 으로 보여지게끔 -->
+						<c:when test="${fn:length(boardDto.btitle) > 30}">
+							<a href="#">${fn:substring(boardDto.btitle, 0, 30)}...</a>
+						</c:when>
+						<c:otherwise>
+						${boardDto.btitle }
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td>${boardDto.bwriter }</td>
 				<td>${boardDto.bdate }</td>
 			</tr>
