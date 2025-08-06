@@ -8,7 +8,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+	<style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background-color: #f1f1f1;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        td:nth-child(1),
+        td:nth-child(4),
+        th:nth-child(1),
+        th:nth-child(4) {
+            text-align: center;
+            width: 80px;
+        }
+
+        td:nth-child(3),
+        th:nth-child(3) {
+            text-align: center;
+            width: 150px;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
 <title>자유 게시판</title>
+
 </head>
 <body>
 	<!-- 게시판 글 리스트 -->
@@ -16,7 +74,7 @@
 	<%
 		// 게시판 더미(dummy) 데이터 만들기
 		
-		List<BoradDto> boradList = new ArrayList<BoradDto>();	
+		List<BoradDto> boradList = new ArrayList<BoradDto>();	//arraylist 선언
 		// 게시글(boradDto)를 여러개 담을 수 있는 arraylist 준비 (선언)
 		
 		
@@ -32,20 +90,22 @@
 	
 	<h2>자유 게시판 목록</h2>
 	<hr>
-	<table border="1" cellpadding="0" cellspacing="0">
-		<tr>
-			<th>No.</th>
-			<th>제목</th>
-			<th>글쓴이</th>
-			<th>날자</th>
-		</tr>
-		
-		<c:forEach var="BoardDto" items="${boradList}">
+	<table>
+		<thead>
 			<tr>
-				<td>${BoardDto.bnum }</td>
-				<td>${BoardDto.btitle }</td>
-				<td>${BoardDto.bwriter }</td>
-				<td>${BoardDto.bdate }</td>
+				<th>No.</th>
+				<th>제목</th>
+				<th>글쓴이</th>
+				<th>날자</th>
+			</tr>
+		</thead>
+		
+		<c:forEach var="boardDto" items="${boradList}">
+			<tr>
+				<td>${boardDto.bnum }</td>
+				<td><a href="#">${boardDto.btitle }</a></td>
+				<td>${boardDto.bwriter }</td>
+				<td>${boardDto.bdate }</td>
 			</tr>
 		</c:forEach>
 	</table>
