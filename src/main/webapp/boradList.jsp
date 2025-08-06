@@ -104,8 +104,9 @@
 		<c:forEach var="boardDto" items="${boradList}">
 			<tr>
 				<td>${boardDto.bnum }</td>
+				<!--  글자수 제한으로 보여지는 갯수 선택 이후 ... 으로 보여지게끔 -->
 				<td>
-					<c:choose> <!--  글자수 제한으로 보여지는 갯수 선택 이후 ... 으로 보여지게끔 -->
+					<c:choose> 
 						<c:when test="${fn:length(boardDto.btitle) > 30}">
 							<a href="#">${fn:substring(boardDto.btitle, 0, 30)}...</a>
 						</c:when>
@@ -114,6 +115,7 @@
 						</c:otherwise>
 					</c:choose>
 				</td>
+				<!-- 여기까지 하는 방법 -->
 				<td>${boardDto.bwriter }</td>
 				<td>${boardDto.bdate }</td>
 			</tr>
