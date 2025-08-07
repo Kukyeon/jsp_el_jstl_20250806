@@ -20,7 +20,7 @@
 	
 	<c:set var="str1" value="Korea" />
 	<h2> 문자열의 길이 : ${fn:length(str1)} </h2>
-	<c:set var="strArr" value="${['kor','jap','china']}" /> 
+	<!--<c:set var="strArr" value="${['kor','jap','china']}" /> -->
 	<h2> 문자열의 길이 : ${fn:length(strArr)} </h2>
 	<hr>
 	<h2>대문자로 변환 : ${fn:toUpperCase(str1)}</h2>
